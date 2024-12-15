@@ -33,7 +33,7 @@
                                 <td class="align-middle">
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="{{ route('admin/cars/edit', ['id'=>$car->id]) }}" type="button" class="btn btn-secondary">Edit</a>
-                                    <a href="" type="button" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('admin/cars/delete', ['id'=>$car->id]) }}" type="button" class="btn btn-danger">Delete</a>
                                     </div>
                                 </td>
                             </tr>

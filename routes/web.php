@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CarController;
+use App\Models\Car;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,6 +20,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/dashboard', function () {
+    $cars = Car::all(); 
+    return view('dashboard', compact('cars'));
+})->middleware(['auth'])->name('dashboard');
+
+
+
+
+
 Route::middleware(['auth', 'admin'])->group(function () {
  
     Route::get('admin/dashboard', [HomeController::class, 'index']);
@@ -28,7 +38,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/cars/store', [CarController::class, 'store'])->name('admin/cars/store');
     Route::get('/admin/cars/edit/{id}', [CarController::class, 'edit'])->name('admin/cars/edit');
     Route::put('/admin/cars/edit/{id}', [CarController::class, 'update'])->name('admin/cars/update');
-    
+    Route::get('/admin/cars/delete/{id}', [CarController::class, 'delete'])->name('admin/cars/delete');
+    Route::get('/admin/cars/{id}', [CarController::class, 'show'])->name('admin/cars/show');
     
 
 });

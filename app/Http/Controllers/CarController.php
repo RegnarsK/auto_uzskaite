@@ -63,4 +63,23 @@ class CarController extends Controller
         }
     }
 
+    public function delete($id)
+    {
+        $cars = Car::findOrFail($id)->delete();
+        if ($cars) {
+            session()->flash('success', 'Car Deleted Successfully');
+            return redirect(route('admin/cars'));
+        } else {
+            session()->flash('error', 'error');
+            return redirect(route('admin/cars'));
+        }
+    }
+
+    public function showcase()
+{
+    $cars = Car::all(); 
+    return view('dashboard', compact('cars'));
+}
+    
+
 }
