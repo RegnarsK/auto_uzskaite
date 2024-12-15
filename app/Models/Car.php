@@ -14,4 +14,10 @@ class Car extends Model
         'model',
         'number_plate',
     ];
+
+    public function jobs()
+    {
+        return $this->hasMany(CarJob::class);
+    }
+
 }

@@ -20,8 +20,20 @@
                         <p><strong>Model:</strong> {{ $car->model }}</p>
                         <p><strong>Number Plate:</strong> {{ $car->number_plate }}</p>
                         
+                        <h4>Car Jobs</h4>
+                        @if($car->jobs->isEmpty())
+                            <p>No jobs assigned to this car yet.</p>
+                        @else
+                            <ul>
+                                @foreach($car->jobs as $job)
+                                    <li>
+                                        <p>{{ $job->job_description }}</p>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
 
-                        
+                        <a href="{{ route('admin/cars/jobs/create', $car->id) }}" class="btn btn-success ">Add Job</a>
                         <a href="{{ route('admin/cars') }}" class="btn btn-primary">Back to Cars List</a>
                     </div>
                 </div>
