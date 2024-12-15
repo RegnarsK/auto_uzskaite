@@ -26,6 +26,9 @@ Route::get('/dashboard', function () {
     return view('dashboard', compact('cars'));
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/cars/{carId}/jobs', [CarJobController::class, 'showJobs'])->name('cars/jobs/show');
+
+
 
 
 
@@ -45,7 +48,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     //darbi
     Route::get('/admin/cars/{carId}/jobs/create', [CarJobController::class, 'create'])->name('admin/cars/jobs/create');
     Route::post('/admin/car/{carId}/jobs/store', [CarJobController::class, 'store'])->name('admin/car/jobs/store');
-
+    Route::get('/admin/car/{carId}/jobs/{jobId}/edit', [CarJobController::class, 'edit'])->name('admin/car/jobs/edit');
+    Route::put('/admin/car/{carId}/jobs/{jobId}', [CarJobController::class, 'update'])->name('admin/car/jobs/update');
+    Route::delete('/admin/car/{carId}/jobs/{jobId}', [CarJobController::class, 'destroy'])->name('admin/car/jobs/destroy');
 });
 
 require __DIR__.'/auth.php';
