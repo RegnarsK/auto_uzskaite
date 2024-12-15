@@ -27,6 +27,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/cars/{carId}/jobs', [CarJobController::class, 'showJobs'])->name('cars/jobs/show');
+Route::put('/cars/{carId}/jobs/update', [CarJobController::class, 'updateAllJobs'])->name('cars/jobs/updateAll');
 
 
 

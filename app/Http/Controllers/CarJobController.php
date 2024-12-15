@@ -64,6 +64,22 @@ class CarJobController extends Controller
         return view('cars/jobs', compact('car'));
     }
 
+    public function updateAllJobs(Request $request, $carId)
+    {
+        $validated = $request->validate([
+            'jobs' => 'array',
+            'jobs.*' => 'boolean', 
+        ]);
+
+        foreach ($validated['jobs'] as $jobId => $completed) {
+            $job = CarJob::findOrFail($jobId);
+            $job->completed = (bool) $completed;
+            $job->save();
+        }
+
+        return redirect()->route('cars/jobs/show', $carId)->with('success', 'Job statuses updated!');
+    }
+
 
 
 }
