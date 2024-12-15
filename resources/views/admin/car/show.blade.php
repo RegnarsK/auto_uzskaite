@@ -28,8 +28,15 @@
                                 @foreach($car->jobs as $job)
                                     <li>
                                         <p>{{ $job->job_description }}</p>
+                                         <a href="{{ route('admin/car/jobs/edit', [$car->id, $job->id]) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <form action="{{ route('admin/car/jobs/destroy', [$car->id, $job->id]) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this job?')">Delete</button>
+                                </form>
                                     </li>
                                 @endforeach
+                               
                             </ul>
                         @endif
 
