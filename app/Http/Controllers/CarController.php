@@ -36,4 +36,31 @@ class CarController extends Controller
         }
     
     }
+
+    public function edit($id)
+    {
+        $cars = Car::findOrFail($id);
+        return view('admin.car.update', compact('cars'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $cars = Car::findOrFail($id);
+        $brand = $request->brand;
+        $model = $request->model;
+        $number_plate = $request->number_plate;
+ 
+        $cars->brand = $brand;
+        $cars->model = $model;
+        $cars->number_plate = $number_plate;
+        $data = $cars->save();
+        if ($data) {
+            session()->flash('success', 'Car Updated Successfully');
+            return redirect(route('admin/cars'));
+        } else {
+            session()->flash('error', 'error');
+            return redirect(route('admin/cars/update'));
+        }
+    }
+
 }
