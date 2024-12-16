@@ -2,7 +2,6 @@
 
 use App\Models\Car;
 use App\Models\CarJob;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\User;
 
 uses(RefreshDatabase::class);
