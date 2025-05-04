@@ -19,9 +19,22 @@
                                 <label for="job_description">Job Description</label>
                                 <textarea name="job_description" id="job_description" class="form-control" rows="4" required></textarea>
                             </div>
+                            <div class="form-group mt-3">
+                            <label for="worker_id">Assign to Worker</label>
+                            <select name="worker_id" id="worker_id" class="form-control">
+                                <option value="">-- No assignment --</option>
+                                @foreach ($workers as $worker)
+                                    <option value="{{ $worker->id }}">{{ $worker->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
                             <button type="submit" class="btn btn-primary mt-3">Save Job</button>
                         </form>
+
+                        
+                        
+
 
                         <a href="{{ route('admin/cars/show', $car->id) }}" class="btn btn-secondary mt-3">Back to Car Details</a>
                     </div>

@@ -29,6 +29,10 @@ Route::get('/dashboard', function () {
 Route::get('/cars/{carId}/jobs', [CarJobController::class, 'showJobs'])->name('cars/jobs/show');
 Route::put('/cars/{carId}/jobs/update', [CarJobController::class, 'updateAllJobs'])->name('cars/jobs/updateAll');
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/my-jobs', [CarJobController::class, 'myJobs'])->name('my/jobs');
+    Route::put('/my-jobs/{job}/update-status', [CarJobController::class, 'updateStatus'])->name('my/jobs/updateStatus');
+});
 
 
 

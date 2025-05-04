@@ -14,33 +14,34 @@
                     @if ($car->jobs->isEmpty())
                         <p>No jobs available for this car.</p>
                     @else
-                    <form action="{{ route('cars/jobs/updateAll', $car->id) }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                        <table class="table table-bordered">
-                            <thead>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Description</th>
+                                <th>Status</th> <!-- Add this -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($car->jobs as $index => $job)
                                 <tr>
-                                    <th>#</th>
-                                    <th>Description</th>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ $job->job_description }}</td>
+                                    <td>
+                                        @if ($job->status == 'completed')
+                                            <span class="badge bg-success">Completed</span>
+                                        @elseif ($job->status == 'in_progress')
+                                            <span class="badge bg-warning text-dark">In Progress</span>
+                                        @else
+                                            <span class="badge bg-secondary">Assigned</span>
+                                        @endif
+                                    </td>
+
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($car->jobs as $index => $job)
-                                    <tr>
-                                        <td>{{ $index + 1 }}</td>
-                                        <td style="{{ $job->completed ? 'text-decoration: line-through;' : '' }}">
-                                {{ $job->job_description }}
-                            </td>
-                                        <td>
-                                        <input type="hidden" name="jobs[{{ $job->id }}]" value="0">
-                                        <input type="checkbox" name="jobs[{{ $job->id }}]" value="1" {{ $job->completed ? 'checked' : '' }}>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        <button type="submit" class="btn btn-success">Update Job Status</button>
-                    </form>
+                            @endforeach
+                        </tbody>
+                    </table>
+
                     @endif
 
                     <a href="{{ route('dashboard') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
