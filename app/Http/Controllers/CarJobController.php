@@ -48,19 +48,22 @@ class CarJobController extends Controller
     return view('admin/car/jobs/edit', compact('job', 'workers', 'statuses'));
     }
 
-    public function update(Request $request, $carId, $jobId)
-    {
-        $validated = $request->validate([
-            'job_description' => 'required|string|max:255',
-        ]);
+        public function update(Request $request, $carId, $jobId)
+        {
+            $validated = $request->validate([
+                'job_description' => 'required|string|max:255',
+                'worker_id' => 'nullable|exists:users,id',
+            ]);
 
-        $job = CarJob::where('id', $jobId)->where('car_id', $carId)->firstOrFail();
-        $job->update([
-            'job_description' => $validated['job_description'],
-        ]);
+            $job = CarJob::where('id', $jobId)->where('car_id', $carId)->firstOrFail();
+            $job->update([
+                'job_description' => $validated['job_description'],
+                'worker_id' => $validated['worker_id'] ?? null,
+                'status' => $validated['worker_id'] ? 'assigned' : 'unassigned',
+            ]);
 
-        return redirect()->route('admin/cars/show', $carId)->with('success', 'Job updated successfully!');
-    }
+            return redirect()->route('admin/cars/show', $carId)->with('success', 'Job updated successfully!');
+        }
 
     public function destroy($carId, $jobId)
     {

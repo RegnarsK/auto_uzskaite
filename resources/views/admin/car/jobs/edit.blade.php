@@ -24,11 +24,11 @@
 
                             <!-- Assign to Worker -->
                             <div class="form-group mt-4">
-                                <label for="assigned_user_id">Assign to Worker</label>
-                                <select name="assigned_user_id" id="assigned_user_id" class="form-control">
+                                <label for="worker_id">Assign to Worker</label>
+                                <select name="worker_id" id="worker_id" class="form-control">
                                     <option value="">-- None --</option>
                                     @foreach($workers as $worker)
-                                        <option value="{{ $worker->id }}" {{ $job->assigned_user_id == $worker->id ? 'selected' : '' }}>
+                                        <option value="{{ $worker->id }}" {{ $job->worker_id == $worker->id ? 'selected' : '' }}>
                                             {{ $worker->name }}
                                         </option>
                                     @endforeach
