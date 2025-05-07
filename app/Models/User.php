@@ -47,7 +47,7 @@ class User extends Authenticatable
     }
 
     public function jobs() {
-        return $this->hasMany(CarJob::class, 'assigned_to');
+        return $this->hasMany(CarJob::class, 'worker_id');
     }
     
 }

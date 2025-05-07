@@ -34,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/my-jobs/{job}/update-status', [CarJobController::class, 'updateStatus'])->name('my/jobs/updateStatus');
 });
 
+Route::get('/admin/users', [CarJobController::class, 'adminUserOverview'])->name('admin/users/index');
 
 
 

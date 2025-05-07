@@ -14,8 +14,15 @@
            
             @auth
                 @if (Auth::user()->usertype === 'admin')
-                    <x-nav-link :href="route('admin/cars')" :active="request()->routeIs('admin.cars.*')">
+                    <x-nav-link :href="route('admin/cars')" :active="request()->routeIs('admin.cars.*')"
+                    class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md shadow">
+                        
                         {{ __('Manage Cars') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('admin/users/index')" :active="request()->routeIs('admin.users.index')"
+                    class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md shadow">
+                        {{ __('Users') }}
                     </x-nav-link>
 
                 @endif
@@ -23,11 +30,13 @@
 
             @auth
                 @if (Auth::user()->usertype === 'user')
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')"
+                    class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md shadow">
                     {{ __('All Cars') }}
                 </x-nav-link>
 
-                    <x-nav-link :href="route('my/jobs')" :active="request()->routeIs('my/jobs')">
+                    <x-nav-link :href="route('my/jobs')" :active="request()->routeIs('my/jobs')"
+                    class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md shadow">
                     {{ __('My Jobs') }}
                 </x-nav-link>
                 @endif

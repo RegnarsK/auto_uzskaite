@@ -81,21 +81,21 @@ class CarJobController extends Controller
         return view('cars/jobs', compact('car'));
     }
 
-    public function updateAllJobs(Request $request, $carId)
-    {
-        $validated = $request->validate([
-            'jobs' => 'array',
-            'jobs.*' => 'boolean', 
-        ]);
+    // public function updateAllJobs(Request $request, $carId)
+    // {
+    //     $validated = $request->validate([
+    //         'jobs' => 'array',
+    //         'jobs.*' => 'boolean', 
+    //     ]);
 
-        foreach ($validated['jobs'] as $jobId => $completed) {
-            $job = CarJob::findOrFail($jobId);
-            $job->completed = (bool) $completed;
-            $job->save();
-        }
+    //     foreach ($validated['jobs'] as $jobId => $completed) {
+    //         $job = CarJob::findOrFail($jobId);
+    //         $job->completed = (bool) $completed;
+    //         $job->save();
+    //     }
 
-        return redirect()->route('cars/jobs/show', $carId)->with('success', 'Job statuses updated!');
-    }
+    //     return redirect()->route('cars/jobs/show', $carId)->with('success', 'Job statuses updated!');
+    // }
 
     public function myJobs()
     {
@@ -122,6 +122,13 @@ class CarJobController extends Controller
             return back()->with('success', 'Status updated');
     }
 
+    public function adminUserOverview()
+    {
+        $users = User::with('jobs.car')->where('usertype', 'user')->get();
+    
+        return view('admin/users/index', compact('users'));
+    }
+    
 
 
 
