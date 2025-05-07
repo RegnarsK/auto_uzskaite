@@ -35,6 +35,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/admin/users', [CarJobController::class, 'adminUserOverview'])->name('admin/users/index');
+Route::get('/admin/car/job-archive', [CarJobController::class, 'jobArchive'])->name('admin/car/jobs/archive');
+
 
 
 
@@ -57,6 +59,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/car/{carId}/jobs/{jobId}/edit', [CarJobController::class, 'edit'])->name('admin/car/jobs/edit');
     Route::put('/admin/car/{carId}/jobs/{jobId}', [CarJobController::class, 'update'])->name('admin/car/jobs/update');
     Route::delete('/admin/car/{carId}/jobs/{jobId}', [CarJobController::class, 'destroy'])->name('admin/car/jobs/destroy');
+    Route::get('/admin/job-archive', [CarJobController::class, 'jobArchive'])->name('admin/jobs/archive');
+
 });
 
 require __DIR__.'/auth.php';

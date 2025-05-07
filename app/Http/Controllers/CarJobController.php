@@ -103,6 +103,7 @@ class CarJobController extends Controller
 
             $jobs = CarJob::with('car')
                 ->where('worker_id', auth()->id())
+                ->where('status', '!=', 'completed')
                 ->get();
 
             return view('jobs/my-jobs', compact('jobs'));
@@ -129,7 +130,14 @@ class CarJobController extends Controller
         return view('admin/users/index', compact('users'));
     }
     
+    public function jobArchive()
+    {
+        $completedJobs = CarJob::with('car', 'worker')
+            ->where('status', 'completed')
+            ->get();
 
+        return view('admin/car/jobs/archive', compact('completedJobs'));
+    }
 
 
 }

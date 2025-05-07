@@ -14,15 +14,20 @@
            
             @auth
                 @if (Auth::user()->usertype === 'admin')
-                    <x-nav-link :href="route('admin/cars')" :active="request()->routeIs('admin.cars.*')"
-                    class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md shadow">
+                    <x-nav-link :href="route('admin/cars')" :active="request()->routeIs('admin/cars.*')"
+                    class="bg-red-600 text-white hover:bg-red-700 px-4 py-2 rounded-md shadow no-underline">
                         
                         {{ __('Manage Cars') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('admin/users/index')" :active="request()->routeIs('admin.users.index')"
-                    class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md shadow">
+                    <x-nav-link :href="route('admin/users/index')" :active="request()->routeIs('admin/users/index')"
+                    class="bg-red-600 text-white hover:bg-red-700 px-4 py-2 rounded-md shadow no-underline">
                         {{ __('Users') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('admin/car/jobs/archive')" :active="request()->routeIs('admin/car/jobs/archive')"
+                        class="bg-red-600 text-white hover:bg-red-700 px-4 py-2 rounded-md shadow no-underline">
+                        {{ __('Job Archive') }}
                     </x-nav-link>
 
                 @endif
@@ -31,12 +36,12 @@
             @auth
                 @if (Auth::user()->usertype === 'user')
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')"
-                    class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md shadow">
+                    class="bg-red-600 text-white hover:bg-red-700 px-4 py-2 rounded-md shadow no-underline">
                     {{ __('All Cars') }}
                 </x-nav-link>
 
                     <x-nav-link :href="route('my/jobs')" :active="request()->routeIs('my/jobs')"
-                    class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md shadow">
+                    class="bg-red-600 text-white hover:bg-red-700 px-4 py-2 rounded-md shadow no-underline">
                     {{ __('My Jobs') }}
                 </x-nav-link>
                 @endif
