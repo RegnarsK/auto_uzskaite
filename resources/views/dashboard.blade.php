@@ -23,7 +23,7 @@
                                         <h3 class="text-xl font-semibold">{{ $car->brand }}</h3>
                                         <p class="text-gray-600">{{ $car->model }}</p>
                                         <p class="text-gray-500 font-bold">Number plate: {{ $car->number_plate }}</p>
-                                        <a href="{{ route('cars/jobs/show', $car->id) }}" class="btn btn-primary">Show Jobs</a>
+                                        <a href="{{ route('cars/jobs/show', $car->id) }}" class="bg-red-600 text-white hover:bg-red-700 px-4 py-2 rounded-md shadow no-underline">Show Jobs</a>
                                     </div>
                                 @endforeach
                             

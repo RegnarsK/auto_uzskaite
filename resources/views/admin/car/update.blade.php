@@ -43,7 +43,7 @@
                         </div>
                         <div class="row">
                             <div class="d-grid">
-                                <button class="btn btn-warning">Update</button>
+                                <button class="bg-red-600 text-white hover:bg-red-700 px-4 py-2 rounded-md shadow">Update</button>
                             </div>
                         </div>
 

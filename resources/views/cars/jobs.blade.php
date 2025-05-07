@@ -19,7 +19,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Description</th>
-                                <th>Status</th> <!-- Add this -->
+                                <th>Status</th> 
                             </tr>
                         </thead>
                         <tbody>

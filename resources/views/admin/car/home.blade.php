@@ -11,8 +11,9 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div>
                     <h1 class="mb-0">Cars List</h1>
-                    <a href="{{ route('admin/cars/create') }}" class="btn btn-primary">Add Car</a>
-
+                    
+                    <a href="{{ route('admin/cars/create') }}" class="bg-red-600 text-white hover:bg-red-700 px-4 py-2 rounded-md shadow">Add Car</a>
+                    
                     <table class="table table-hover">
                         <thead class="table-primary">
                             <tr>
