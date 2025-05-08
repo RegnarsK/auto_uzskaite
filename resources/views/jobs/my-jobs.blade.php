@@ -25,7 +25,7 @@
                             <option value="in_progress" {{ $job->status == 'in_progress' ? 'selected' : '' }}>In Progress</option>
                             <option value="completed" {{ $job->status == 'completed' ? 'selected' : '' }}>Completed</option>
                         </select>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="bg-red-600 text-white hover:bg-red-700 px-4 py-2 rounded-md shadow no-underline">
                             Update Status
                         </button>
                     </div>

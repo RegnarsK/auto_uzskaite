@@ -16,7 +16,7 @@
                         {{session('error')}}
                     </div>
                     @endif
-                    <p><a href="{{ route('admin/cars') }}" class="btn btn-primary">Go Back</a></p>
+                    <p><a href="{{ route('admin/cars') }}" class="bg-red-600 text-white hover:bg-red-700 px-4 py-2 rounded-md shadow no-underline">Go Back</a></p>
                     <form action="{{ route('admin/cars/store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
@@ -45,7 +45,7 @@
                         </div>
                         <div class="row">
                             <div class="d-grid">
-                                <button class="btn btn-primary">Submit</button>
+                                <button class="bg-red-600 text-white hover:bg-red-700 px-4 py-2 rounded-md shadow no-underline">Submit</button>
                             </div>
                 </div>
             </div>
